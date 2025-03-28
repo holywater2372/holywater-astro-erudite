@@ -1,0 +1,18 @@
+---
+title: 'Containers but mainly Docker hardening'
+description: 'Whenever you depend on Node packages with missing maintainers, patching becomes a necessary evil.'
+date: 2024-03-04
+tags: ['Docker','Ansible','Container Security']
+image: './docker.png'
+authors: ['h0lywat3r']
+---
+
+## What will be the blog about (about dead maintainers)
+
+This blogs was part of my optimal practices to reinforce when deploying an application in a containerized environment taking into consideration various security measures that have been put in place for seamless integration. I might further go into a little more detail explaining the impact of [Ansible](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) playbooks used of automation throughout.  
+
+## Background
+
+In this case study  we were provided with an `CentOS version 7` docker images which was deprecated in the year 2022.
+
+![](./centos.png)

@@ -53,36 +53,39 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --background: #fcfcfb; /* soft sky blue background, approximation */
+  --foreground: #000000; /* deep ocean text */
+  --primary: #000000; /* calm sea blue */
+  --primary-foreground: #f0f6fc; /* pale water reflection */
+  --secondary: #97b9ca; /* light aqua */
+  --secondary-foreground: #343535; /* darker blue for contrast */
+  --muted: #c6d5de; /* soft muted blue */
+  --muted-foreground: #6f8c98; /* Text in listing*/
+  --accent: #010507; /* light water highlight */
+  --accent-foreground: #46595c; /* dark ocean contrast */
+  --destructive: #e57373; /* reddish for destructive, approximation */
+  --border: #cad5dc; /* subtle border */
+  --ring: #a0b3bf; /* focus ring */
 }
 
+
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --ring: oklch(0.556 0 0);
+  --background: #0e191d; /* deep ocean blue */
+  --foreground: #ffffff; /* light reflection on water */
+  --primary: #346880; /* deep ocean shimmer */
+  --primary-foreground: #cdd2d8; /* soft light on dark sea */
+  --secondary: #384d57; /* deep twilight sea */
+  --secondary-foreground: #d7e2e8; /* twilight wave highlight */
+  --muted: #2b3f48; /* dusk ocean */
+  --muted-foreground: #b2c7cf; /* gentle moon reflection */
+  --accent: #40708a; /* cool accent, deeper contrast */
+  --accent-foreground: #ccd6dd; /* bright but cool accent */
+  --destructive: #e57373; /* bright red, remains for attention */
+  --border: rgba(200, 220, 230, 0.15); /* slightly more visible, cool tinted */
+  --ring: #6b899e; /* focus ring in cool dark mode */
 }
+
+
 
 @layer base {
   *,

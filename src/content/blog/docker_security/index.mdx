@@ -7,12 +7,98 @@ image: './docker.png'
 authors: ['h0lywat3r']
 ---
 
-## What will be the blog about (about dead maintainers)
 
-This blogs was part of my optimal practices to reinforce when deploying an application in a containerized environment taking into consideration various security measures that have been put in place for seamless integration. I might further go into a little more detail explaining the impact of [Ansible](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) playbooks used of automation throughout.  
+This blog is part of my best practices for deploying an application in a containerized environment, taking into consideration the various security measures that have been implemented for seamless integration. I might further explain the impact of [Ansible playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) used for automation of deployment of containers.  
+
+![](./centos.png)
+
+
+## Docker Introduction
+
+> Docker is used to package and contenrize applications and ship them and to run them anywhere, anytime and any number of times.
+
+- Let me explain the usage of Docker with an example. Most of us have faced the `ModuleNotFoundError{:bash}` error because of missing Python packages or libraries. This is when Docker comes into play, providing an environment with all these dependencies installed. One could simply find an image on Docker Hub, which includes a Linux machine with all the required Python dependencies, ensuring that the application runs consistently across different systems solving the `"it works of my machine problem"`.
+- Now that we understand the usage of docker, we need to understand how docker works.
+
+## How Docker works?
+
+- An operating system is just the kernel plus the essential software layered over hardware.
+- Let’s take different Linux distros, such as Ubuntu (based on Debian) and Red Hat. While these may have different software and packages, they all use the same kernel. Distros are like humans: they may vary a lot on the outside but contain the same kernel inside (like human body parts).
+- Docker essentially uses this concept, using the kernel of the host system and installs multiple containers or instances over it. With Docker, one can have a single Linux host and install multiple Linux containers or instances over it.
+
+> **Quick Note**: Now that we understand Docker uses the kernel of the host system, it’s important to note that Linux containers cannot be directly installed on a Windows machine or vice-versa. This is because the kernel in a Windows system is different from the Linux kernel. Docker relies on the underlying host's kernel to run containers, and since the Windows kernel is not compatible with Linux-specific system calls and functionalities, you cannot run Linux containers natively on Windows. However, there are workarounds, such as using `Windows Subsystem for Linux (WSL)` to enable the running of Linux containers on a Windows host.
+
+
+ The following are some basic components of Docker:
+- `Images`: Executable code built in layers. A read only template or recipe for a container and can't be modified.
+- `Containers`: Containers are created from images and are isolated from each others. These are the environments we run, but they can be started/stopped.
+- `Docker Daemon`: It does all the real work behind containers, from building to running and delivery.
+- `Docker Client`: The component you use to issue instructions, such as the Docker CLI.
+- `Docker Hub`: A repository of Docker images.
+
+### Docker Compose
+
+[Docker Compose](https://docs.docker.com/compose/) is a tool that helps you easily set up and run apps that use more than one container. It lets you define everything your app needs in one file and start it all with a single command, making development and deployment much simpler.
+
+
+```bash title="Some basic docker-compose commands"
+# Start all services defined in docker-compose.yml
+docker-compose up
+
+# Start services in the background (detached mode)
+docker-compose up -d
+
+# Stop all running containers
+docker-compose down
+
+# View logs of your containers
+docker-compose logs
+
+# Rebuild services after changes
+docker-compose up --build
+
+# Check running services
+docker-compose ps
+```
+
+### Example: Why You Need Docker Compose in Real Life
+Imagine you're building a web app that needs:
+- A frontend (like `React` or `HTML/CSS`)
+- A backend (like a `Flask` or `Node.js` server)
+- A database (like `MySQL` or `MongoDB`)
+
+Instead of starting each one manually with separate `docker run` commands, you can define them all in a `docker-compose.yml` file like so:
+
+```yaml title="Sample docker-compose.yaml"
+
+version: '3'
+services:
+  web:
+    build: ./web
+    ports:
+      - "3000:3000"
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+```
+
+Then you can just run 
+
+```bash 
+docker-compose up 
+
+```
+
+All your services are up and talking to each other leveraging docker networking allows containers to communicate with each other, the host system, and external networks.  
+
 
 ## Background
 
-In this case study  we were provided with an `CentOS version 7` docker images which was deprecated in the year 2022.
-
-![](./centos.png)
+In this case study  we were provided with an `CentOS version 7` docker images which was deprecated in the year 2022, hence, transitioned to the more current and supported `Ubuntu base image, version 22.04.3 LTS "Jammy Jellyfish"`.

@@ -6,7 +6,6 @@ import { buttonVariants } from '@/components/ui/button'
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getRecentPosts } from '@/lib/data-utils'
-import DiscordCard from '@/components/DiscordCard.astro'
 
 const blog = await getRecentPosts(SITE.featuredPostCount)
 ---
